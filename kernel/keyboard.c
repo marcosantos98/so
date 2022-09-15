@@ -20,7 +20,9 @@ void keyboard_handler_main(void)
 
 		if (keycode == 0x1C)
 		{
-			video_write("\n", 1);
+			video_move_row(1, false);
+			video_move_col(-video_get_col(), false);
+			video_scroll();
 			return;
 		}
 		else if (keycode == 0x0E)

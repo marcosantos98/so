@@ -119,3 +119,13 @@ void video_scroll()
 		video_row = 24;
 	}
 }
+
+size_t video_get_col()
+{
+	return video_col;
+}
+
+size_t video_get_row()
+{
+	return video_row;
+}

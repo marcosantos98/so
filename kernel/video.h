@@ -40,6 +40,8 @@ void video_cursor_move(size_t, size_t);
 void video_move_col(size_t, bool);
 void video_move_row(size_t, bool);
 void video_scroll();
+size_t video_get_col();
+size_t video_get_row();
 
 static inline uint8_t video_entry_color(VideoColor fg, VideoColor bg)
 {
