@@ -1,4 +1,4 @@
 */**/*.o
 boot.o
-so.bin
-iso
+*.bin
+*.iso
