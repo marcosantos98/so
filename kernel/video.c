@@ -67,17 +67,19 @@ void video_put_char(char c)
 		return;
 	}
 	video_set_entry_at(c, video_color, video_col, video_row);
-	const size_t temp = video_col + 1;
+	size_t temp = video_col + 1;
 	if (temp == VIDEO_WIDTH)
 	{
 		video_col = 0;
-		if (++video_row == VIDEO_HEIGHT)
-			video_row = 0;
-	} else {
+		video_scroll();
+	}
+	else
+	{
 		video_col++;
 	}
 
 	video_cursor_move(video_col, video_row);
+	video_scroll();
 }
 
 void video_write(const char *data, size_t size)
@@ -97,4 +99,26 @@ void video_cursor_move(size_t x, size_t y)
 	io_write(0x3D5, (y * VIDEO_WIDTH + x) >> 8);
 	io_write(0x3D4, 15);
 	io_write(0x3D5, (y * VIDEO_WIDTH + x));
+}
+
+void video_scroll()
+{
+	if (video_row >= 25)
+	{
+		int i;
+		for (i = 0 * 80; i < 24 * 80; i++)
+		{
+			video_buffer[i] = video_buffer[i + 80];
+		}
+
+		for (i = 24 * 80; i < 25 * 80; i++)
+		{
+			video_buffer[i] = video_entry(' ', video_color);
+		}
+		video_row = 24;
+	}
+	else
+	{
+		video_row++;
+	}
 }

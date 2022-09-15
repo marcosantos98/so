@@ -39,6 +39,7 @@ void video_write_cstr(const char *);
 void video_cursor_move(size_t, size_t);
 void video_move_col(size_t, bool);
 void video_move_row(size_t, bool);
+void video_scroll();
 
 static inline uint8_t video_entry_color(VideoColor fg, VideoColor bg)
 {
