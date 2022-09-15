@@ -71,6 +71,7 @@ void video_put_char(char c)
 	if (temp == VIDEO_WIDTH)
 	{
 		video_col = 0;
+		video_row++;
 		video_scroll();
 	}
 	else
@@ -116,9 +117,5 @@ void video_scroll()
 			video_buffer[i] = video_entry(' ', video_color);
 		}
 		video_row = 24;
-	}
-	else
-	{
-		video_row++;
 	}
 }
