@@ -12,7 +12,7 @@ void gdt_main()
     gdt_set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
     gdt_set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
 
-    asm volatile("lgdt [%0]" : : "m" (gdt_ptr));
+    gdt_flush((uint32_t)&gdt_ptr);    
 }
 
 void gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char granularity)

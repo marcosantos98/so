@@ -11,6 +11,7 @@ global keyboard_handler
 global read_port
 global write_port
 global load_idt
+global gdt_flush
 
 extern kernel_main 		;this is defined in the c file
 extern keyboard_handler_main
@@ -25,6 +26,19 @@ write_port:
 	mov   edx, [esp + 4]    
 	mov   al, [esp + 4 + 4]  
 	out   dx, al  
+	ret
+
+gdt_flush:
+	mov edx, [esp + 4]
+	lgdt [edx]
+	mov ax, 0x10      
+	mov ds, ax        
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax				
+	jmp 0x08:.flush ; Far jump
+
+.flush:
 	ret
 
 load_idt:

@@ -25,7 +25,7 @@ struct GDTPtr
 typedef struct GDTEntry GDTEntry;
 typedef struct GDTPtr GDTPtr;
 
-extern void gdt_flush();
+extern void gdt_flush(uint32_t);
 
 void gdt_main();
 void gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char granularity);
