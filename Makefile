@@ -1,6 +1,5 @@
-# FIXME: Remove absolute paths
-LD = /home/marco/opt/cross/bin/i686-elf-ld
-GCC = /home/marco/opt/cross/bin/i686-elf-gcc
+LD = toolchain/cross/bin/i686-elf-ld
+GCC = toolchain/cross/bin/i686-elf-gcc
 
 CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 
