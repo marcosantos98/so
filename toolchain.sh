@@ -31,8 +31,8 @@ which -- $TARGET-as || echo $TARGET-as is not in the PATH
 
 cd ../gcc
 ../gcc-$GCC/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c,c++ --without-headers
-make all-gcc -j 4
-make all-target-libgcc -j4
+make all-gcc
+make all-target-libgcc
 echo "Install GCC"
 sudo make install-gcc
 sudo make install-target-libgcc
