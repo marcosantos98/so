@@ -2,3 +2,5 @@
 boot.o
 *.bin
 *.iso
+iso
+.vscode
