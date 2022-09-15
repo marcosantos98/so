@@ -14,6 +14,26 @@ void video_main()
 	video_color = video_entry_color(VC_WHITE, VC_BLACK);
 }
 
+void video_move_col(size_t amt, bool clear)
+{
+	video_col += amt;
+	video_cursor_move(video_col, video_row);
+	if (clear)
+	{
+		video_set_entry_at(' ', video_color, video_col, video_row);
+	}
+}
+
+void video_move_row(size_t amt, bool clear)
+{
+	video_row += amt;
+	video_cursor_move(video_col, video_row);
+	if (clear)
+	{
+		video_set_entry_at(' ', video_color, video_col, video_row);
+	}
+}
+
 void video_set_color(uint8_t color)
 {
 	video_color = color;

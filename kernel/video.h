@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #define VIDEO_MEM_BEGIN 0xB8000
 #define VIDEO_WIDTH 80
@@ -36,6 +37,8 @@ void video_put_char(char);
 void video_write(const char *, size_t);
 void video_write_cstr(const char *);
 void video_cursor_move(size_t, size_t);
+void video_move_col(size_t, bool);
+void video_move_row(size_t, bool);
 
 static inline uint8_t video_entry_color(VideoColor fg, VideoColor bg)
 {
