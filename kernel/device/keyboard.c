@@ -1,6 +1,6 @@
 #include "keyboard.h"
 
-#include "io.h"
+#include "../io.h"
 #include "video.h"
 #include "keyboard_map.h"
 

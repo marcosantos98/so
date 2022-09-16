@@ -4,8 +4,8 @@
 
 #include "gdt.h"
 #include "idt.h"
-#include "video.h"
-#include "keyboard.h"
+#include "device/video.h"
+#include "device/keyboard.h"
 
 void kernel_main(void)
 {
