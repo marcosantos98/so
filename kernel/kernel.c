@@ -4,8 +4,8 @@
 
 #include "gdt.h"
 #include "idt.h"
-#include "video.h"
-#include "keyboard.h"
+#include "device/video.h"
+#include "device/keyboard.h"
 
 /* Check if the compiler thinks you are targeting the wrong operating system. */
 #if defined(__linux__)

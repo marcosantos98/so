@@ -11,7 +11,5 @@ uint8_t io_read(uint16_t port)
 
 void io_write(uint16_t port, uint8_t data)
 {
-    asm volatile("out %1, %0"
-                 :
-                 : "dN"(port), "a"(data));
+    asm volatile("out %1, %0" ::"dN"(port), "a"(data));
 }

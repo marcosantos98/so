@@ -1,8 +1,8 @@
 #include "idt.h"
 
-#include "keyboard.h"
+#include "device/keyboard.h"
 #include "io.h"
-#include "video.h"
+#include "device/video.h"
 
 IDTEntry idt[IDT_SIZE] = {0};
 IDTPtr idt_ptr;

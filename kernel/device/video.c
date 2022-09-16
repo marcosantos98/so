@@ -1,6 +1,6 @@
 #include "video.h"
-#include "io.h"
-#include "../libc/string.h"
+#include "../io.h"
+#include "../../libc/string.h"
 
 uint16_t *video_buffer;
 uint8_t video_color;
