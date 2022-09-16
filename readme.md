@@ -12,6 +12,8 @@ You probably can translate the project name to your own language, but SO stands 
 
 ## Build:
 
+**NOTE:** If you already have built the cross compiler you just need to change the GCC and LD variables in the `Makefile`. This means no need to exec `./toolchain.sh`
+
 ```bash
 # Clone this repo
 cd so
