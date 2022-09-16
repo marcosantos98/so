@@ -57,6 +57,23 @@ void video_set_entry_at(char c, uint8_t color, size_t x, size_t y)
 	video_buffer[index] = video_entry(c, color);
 }
 
+void video_put_dec(int number)
+{
+	if (number != 0)
+	{
+		while (number > 0)
+		{
+			int d = number % 10;
+			video_put_char(d + 48);
+			number = number / 10;
+		}
+	}
+	else
+	{
+		video_put_char(48);
+	}
+}
+
 void video_put_char(char c)
 {
 	if (c == '\n')

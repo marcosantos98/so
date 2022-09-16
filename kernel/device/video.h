@@ -34,6 +34,7 @@ void video_clear_mem();
 void video_set_color(uint8_t);
 void video_set_entry_at(char, uint8_t, size_t, size_t);
 void video_put_char(char);
+void video_put_dec(int);
 void video_write(const char *, size_t);
 void video_write_cstr(const char *);
 void video_cursor_move(size_t, size_t);
