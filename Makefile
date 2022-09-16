@@ -3,8 +3,8 @@ GCC = toolchain/cross/bin/i686-elf-gcc
 
 CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 
-asm_src = boot.o
-kernel_src = kernel/kernel.o kernel/gdt.o kernel/idt.o kernel/io.o
+asm_src = boot.o kernel/interrupts.o
+kernel_src = kernel/kernel.o kernel/gdt.o kernel/idt.o kernel/io.o kernel/isr.o
 kernel_device_src = kernel/device/video.o kernel/device/keyboard.o
 libc_src = libc/string.o
 misc_output = so.bin
@@ -26,4 +26,4 @@ clean:
 	rm $(misc_output)
 
 run:
-	qemu-system-i386 -kernel so.bin
+	qemu-system-i386 -kernel so.bin -d int -D log.txt
