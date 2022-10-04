@@ -59,19 +59,15 @@ void video_set_entry_at(char c, uint8_t color, size_t x, size_t y)
 
 void video_put_dec(int number)
 {
-	if (number != 0)
+	char buf[32];
+	size_t buf_sz = 0;
+	do
 	{
-		while (number > 0)
-		{
-			int d = number % 10;
-			video_put_char(d + 48);
-			number = number / 10;
-		}
-	}
-	else
-	{
-		video_put_char(48);
-	}
+		buf[sizeof(buf) - buf_sz - 1] = number % 10 + '0';
+		buf_sz++;
+		number /= 10;
+	} while (number);
+	video_write(&buf[sizeof(buf) - buf_sz], buf_sz);
 }
 
 void video_put_char(char c)

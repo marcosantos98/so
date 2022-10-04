@@ -18,5 +18,9 @@ void kernel_main(void)
 	video_write_cstr("Enable Keyboard\n");
 	keyboard_enable();	
 
+	video_write_cstr("With numbers now! ");
+	video_put_dec(6969420);
+	video_put_char('\n');
+
 	while(1);
 }
