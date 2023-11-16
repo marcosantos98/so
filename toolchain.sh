@@ -23,7 +23,7 @@ tar xf gcc-$GCC.tar.xz
 
 cd binutils
 ../binutils-$BIN_UTILS/configure --target=$TARGET --prefix="$PREFIX" --with-sysroot --disable-nls --disable-werror
-make -j 4
+make -j
 echo "Install Bin Utils"
 sudo make install
 
