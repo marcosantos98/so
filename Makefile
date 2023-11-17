@@ -1,29 +1,26 @@
 LD = toolchain/cross/bin/i686-elf-ld
 GCC = toolchain/cross/bin/i686-elf-gcc
 
-CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -I./c/
 
-asm_src = boot.o
-kernel_src = kernel/kernel.o kernel/gdt.o kernel/idt.o kernel/io.o
-kernel_device_src = kernel/device/video.o kernel/device/keyboard.o
-libc_src = libc/string.o
-misc_output = so.bin
+asm_src = bin/boot.o
+kernel_src = bin/kernel.o bin/vga.o
 
-%.o: %.c
+misc_output = bin/so.bin
+
+bin/%.o: %.c
 	$(GCC) -c $< -o $@ $(CFLAGS)
 
-%.o: %.s
+bin/%.o: %.asm
 	nasm -f elf32 $< -o $@
 
-so.bin: link.ld $(asm_src) $(kernel_src) $(kernel_device_src) $(libc_src)
-	$(LD) -T $< -o $@ $(asm_src) $(kernel_src) $(kernel_device_src) $(libc_src)
+bin/so.bin: link.ld $(asm_src) $(kernel_src)
+	$(LD) -T $< -o $@ $(asm_src) $(kernel_src)
 
 clean:
-	rm $(asm_src)
-	rm $(kernel_src)
-	rm $(kernel_device_src)
-	rm $(libc_src)
-	rm $(misc_output)
+	rm -f $(asm_src)
+	rm -f $(kernel_src)
+	rm -f $(misc_output)
 
 run:
-	qemu-system-i386 -kernel so.bin
+	qemu-system-i386 -kernel bin/so.bin
