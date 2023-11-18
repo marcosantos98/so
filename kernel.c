@@ -5,6 +5,8 @@
 void kernel_main(void)
 {
 	vgaInit(BLACK);
-	vgaPrint("Hello World!");
+	const char* prompt = " > ";
+	vgaPrint("SO - Sistema Operativo!\n");
+	vgaPrint(prompt);
 	while(1);
 }
