@@ -1,10 +1,8 @@
-#include <string.h>
-
 #include "io.h"
 #include "vga.h"
 
-uint16_t *vgaBuff;
-uint8_t vgaBackgroundColor;
+u16 *vgaBuff;
+u8 vgaBackgroundColor;
 
 size_t cursorX = 0;
 size_t cursorY = 0;
@@ -27,7 +25,7 @@ void __setColor(int pos, VGAColor color)
     vgaBuff[pos] = ' ' | (color.foreground | color.background << 4) << 8;
 }
 
-void __putC(uint8_t c, int pos, uint8_t textColor)
+void __putC(u8 c, int pos, u8 textColor)
 {
     vgaBuff[pos] = c | (textColor | vgaBackgroundColor << 4) << 8;
 }
@@ -69,7 +67,7 @@ void vgaPrint(const char *buffer)
 
 void vgaInit(VGAColor color)
 {
-    vgaBuff = (uint16_t *)VGA_TXT_MODE; // Point our buffer to the logical of VGA in pyshical memory
+    vgaBuff = (u16 *)VGA_TXT_MODE; // Point our buffer to the logical of VGA in pyshical memory
     vgaBackgroundColor = color.background; // Save the given color so we can draw text with the same background
                                             
     __moveCursor(0, 0); // Setup the cursor                    

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <stdint.h>
+#include "nice.h"
 
 // Read value of `port` to into `rv` using `in` instruction.
-inline static uint8_t ioRead(uint16_t port)
+inline static u8 ioRead(u16 port)
 {
-    uint8_t rv;
+    u8 rv;
     asm volatile("in %1, %0"
                  : "=a"(rv)
                  : "dN"(port));
@@ -13,7 +13,7 @@ inline static uint8_t ioRead(uint16_t port)
 }
 
 // Write value `data` to `port` using `out` instrution
-inline static void ioWrite(uint16_t port, uint8_t data)
+inline static void ioWrite(u16 port, u8 data)
 {
     asm volatile("out %1, %0" ::"dN"(port), "a"(data));
 }

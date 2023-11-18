@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include "nice.h"
 
 // Location of the VGA Text Mode buffer.
 // https://littleosbook.github.io/#the-framebuffer
@@ -19,8 +19,8 @@
 
 typedef struct
 {
-    uint8_t background;
-    uint8_t foreground;
+    u8 background;
+    u8 foreground;
 } VGAColor;
 
 
