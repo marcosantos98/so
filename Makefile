@@ -23,4 +23,4 @@ clean:
 	rm -f $(misc_output)
 
 run:
-	qemu-system-i386 -kernel bin/so.bin
+	qemu-system-i386 -kernel bin/so.bin -monitor stdio
