@@ -4,7 +4,7 @@ GCC = toolchain/cross/bin/i686-elf-gcc
 CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -I./c/
 
 asm_src = bin/boot.o
-kernel_src = bin/kernel.o bin/vga.o
+kernel_src = bin/kernel.o bin/vga.o bin/gdt.o
 
 misc_output = bin/so.bin
 
